@@ -1,7 +1,7 @@
+pip<24.0
 streamlit
 pandas
 numpy
 scikit-learn
---only-binary :all:
-lightfm
+lightfm==1.16
 joblib
