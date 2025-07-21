@@ -1,6 +1,7 @@
+pip<24.0
 streamlit
 pandas
 numpy
 scikit-learn
-lightfm
-joblib==1.5.1
+lightfm==1.16
+joblib
