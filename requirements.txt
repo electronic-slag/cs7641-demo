@@ -3,5 +3,6 @@ streamlit
 pandas
 numpy
 scikit-learn
-lightfm==1.16
+Cython
+lightfm
 joblib
