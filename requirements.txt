@@ -3,4 +3,4 @@ pandas
 numpy
 scikit-learn
 lightfm
-joblib
+joblib==1.5.1
