@@ -4,5 +4,5 @@ pandas
 numpy
 scikit-learn
 Cython
-lightfm
+git+https://github.com/lyst/lightfm@master
 joblib
