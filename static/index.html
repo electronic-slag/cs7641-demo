@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>🎵 SynergyTune: A Hybrid Deep Learning Approach to Personalized Music Recommendation</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+    <!-- GitHub Markdown CSS -->
+    <link
+            rel="stylesheet"
+            href="https://cdnjs.cloudflare.com/ajax/libs/github-markdown-css/5.2.0/github-markdown-light.min.css"
+            integrity="sha512-…"
+            crossorigin="anonymous"
+            referrerpolicy="no-referrer"
+    />
+    <style>
+        /* 给 markdown-viewer 内部的 .markdown-body 再加点样式 */
+        markdown-viewer .markdown-body {
+            box-sizing: border-box;
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 24px;
+            background: #fff;
+            border-radius: 6px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+        }
+        markdown-viewer .markdown-body img {
+            max-width: 100%;
+            height: auto;
+        }
+    </style>
+</head>
+<body>
+    <header class="hero">
+        <div class="container">
+            <h1 class="hero-title">🎵 SynergyTune</h1>
+            <p class="hero-subtitle">A Hybrid Deep Learning Approach to Personalized Music Recommendation</p>
+            <div class="hero-buttons">
+                <a href="https://cs7641-demo.streamlit.app/" class="btn btn-primary"> ✅ Start Experience</a>
+                <a href="#features" class="btn btn-secondary">📖 Learn More</a>
+                <a href="https://github.gatech.edu/yzhang4056/cs7641-project" class="btn btn-secondary">🔗 View Repo</a>
+            </div>
+        </div>
+    </header>
+
+    <main>
+        <section id="features" class="features">
+            <div class="container">
+                <h2 class="section-title">System Features</h2>
+                <div class="features-grid">
+                    <div class="feature-card">
+                        <div class="feature-icon">🎯 </div>
+                        <h3>Cold-Start Handling</h3>
+                        <p>Attribute-based clustering allows new songs to be recommendable immediately, even without interaction data.</p>
+                    </div>
+                    <div class="feature-card">
+                        <div class="feature-icon">🧠</div>
+                        <h3>Lightweight & Interpretable Model</h3>
+                        <p>Uses LightFM with sparse cluster and audio-emotion features, avoiding deep models to preserve interpretability.</p>
+                    </div>
+                    <div class="feature-card">
+                        <div class="feature-icon">🔬</div>
+                        <h3>Multi-Modal Feature Integration</h3>
+                        <p>Combines emotional, audio, and metadata to enrich song representation and improve recommendation quality.</p>
+                    </div>
+                    <div class="feature-card">
+                        <div class="feature-icon">🧪</div>
+                        <h3>Clustering-Assisted Recall</h3>
+                        <p>Clusters group similar songs by mood and sound, supporting more diverse and semantically meaningful recommendations.</p>
+                    </div>
+                    <div class="feature-card">
+                        <div class="feature-icon">📈</div>
+                        <h3>Transparent Evaluation</h3>
+                        <p>Achieved a 45% lift in Precision@10 over baseline; diagnostic plots provided to interpret model decisions.</p>
+                    </div>
+                    <div class="feature-card">
+                        <div class="feature-icon">🧰</div>
+                        <h3>Simple Web Interface</h3>
+                        <p>Deployed via Streamlit with basic song search, cluster-based suggestions, and visualization of user-song matches.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="demo">
+            <div class="container">
+                <h2 class="section-title">Final Report</h2>
+                <markdown-viewer src="index.md"></markdown-viewer>
+            </div>
+        </section>
+
+        
+    </main>
+
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>🎵 SynergyTune</h3>
+                    <p>A Hybrid Deep Learning Approach to Personalized Music Recommendation</p>
+                <p>&copy; 2025 SynergyTune. Open sourced under the MIT License.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- 1. 加载 markdown-it -->
+    <script src="https://cdn.jsdelivr.net/npm/markdown-it/dist/markdown-it.min.js"></script>
+    <!-- 2. 定义并注册自定义元素 -->
+    <script>
+        const md = window.markdownit();
+        class MarkdownViewer extends HTMLElement {
+            async connectedCallback() {
+                const src = this.getAttribute('src');
+                try {
+                    const res = await fetch(src);
+                    if (!res.ok) throw new Error(`Status ${res.status}`);
+                    const text = await res.text();
+
+                    // 用一个 div.wrap 挂载渲染结果
+                    const wrapper = document.createElement('div');
+                    wrapper.classList.add('markdown-body');
+                    wrapper.innerHTML = md.render(text);
+
+                    this.innerHTML = '';
+                    this.appendChild(wrapper);
+                } catch (err) {
+                    console.error(err);
+                    this.innerHTML = `<pre style="color:red">加载失败：${err.message}</pre>`;
+                }
+            }
+        }
+        customElements.define('markdown-viewer', MarkdownViewer);
+    </script>
+</body>
+</html>
+
+
