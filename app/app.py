@@ -85,7 +85,7 @@ st.set_page_config(page_title="KKBox Music Recommendation System", layout="wide"
 # Top banner
 st.markdown("""
 <div style='width:100%;background:linear-gradient(90deg,#4f8cff 0%,#38e8ff 100%);padding:1.2em 0 1.2em 1.5em;border-radius:12px;margin-bottom:1.5em;'>
-    <span style='font-size:2.2em;font-weight:700;color:#fff;letter-spacing:1px;'>🎵 KKBox Enhanced Music Recommendation System</span>
+    <span style='font-size:2.2em;font-weight:700;color:#fff;letter-spacing:1px;'>🎵 KKBox Enhanced Music Recommendation System - Demo on the test set</span>
 </div>
 """, unsafe_allow_html=True)
 
